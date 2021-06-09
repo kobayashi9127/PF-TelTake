@@ -1,20 +1,22 @@
-h2
-  | ログイン
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label "ログインID"
-    br
-    = f.text_field :login_id, autofocus: true, autocomplete: "login_id"
-  .field
-    = f.label "パスワード"
-    br
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-h5
-  |  まだ新規登録がお済みでない方はこちら 
-  = render "devise/shared/links"
+.container
+  .text-center
+    h2
+      | ログイン
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .field.mt-5
+        = f.label "ログインID"
+        br
+        = f.text_field :login_id, autofocus: true, autocomplete: "login_id"
+      .field.mt-3
+        = f.label "パスワード"
+        br
+        = f.password_field :password, autocomplete: "current-password"
+      - if devise_mapping.rememberable?
+        .field.mt-3
+          = f.check_box :remember_me
+          = f.label :remember_me
+      .actions.mt-3
+        = f.submit "ログイン", class: "btn btn-secondary"
+    h5.mt-5
+      |  まだ新規登録がお済みでない方はこちら
+      = render "devise/shared/links"

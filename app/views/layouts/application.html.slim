@@ -5,13 +5,22 @@ html
       | TelTake
     = csrf_meta_tags
     = csp_meta_tag
+    meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"
+
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
   body
-    - if shop_signed_in?
-      li
-        = link_to "ログアウト", destroy_user_session_path, method: :delete
-    - else
-      li
-        = link_to "お店管理", new_shop_session_path
+    header
+      .navbar.navbar-expand-lg.navbar-light
+        .container
+
+          - if shop_signed_in?
+            li
+              = link_to "ログアウト", destroy_user_session_path, method: :delete
+          - else
+            li
+              = link_to "お店管理", new_shop_session_path
+          = link_to "お問い合わせ"
+
     = yield
