@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    title
+      | TelTake
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    - if shop_signed_in?
+      li
+        = link_to "ログアウト", destroy_user_session_path, method: :delete
+    - else
+      li
+        = link_to "お店管理", new_shop_session_path
+    = yield
