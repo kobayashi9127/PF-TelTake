@@ -1,0 +1,44 @@
+<h2>お店新規登録</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label "お店名" %><br />
+    <%= f.text_field :shop_name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label "お店の住所" %><br />
+    <%= f.text_field :address, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label "お店の電話番号" %><br />
+    <%= f.text_field :phone_number, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label "ログインID" %><br />
+    <%= f.text_field :login_id, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label "パスワード" %>
+    <% if @minimum_password_length %>
+    (<%= @minimum_password_length %>文字以上)
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "パスワード(確認)" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
