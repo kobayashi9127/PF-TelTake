@@ -4,8 +4,8 @@
       | お店一覧
 
   .row
-
-    - @shops.each do |shop|
-      p = shop.shop_name
-      p = shop.phone_number
-      p = shop.address
+    .col-10
+      - @shops.each do |shop|
+        = attachment_image_tag shop, :shop_image, :fill, 200, 200
+        = shop.shop_name
+        = shop.address
