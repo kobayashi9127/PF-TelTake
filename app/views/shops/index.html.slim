@@ -1,0 +1,11 @@
+.container
+  .row
+    h2.text-center
+      | お店一覧
+
+  .row
+
+    - @shops.each do |shop|
+      p = shop.shop_name
+      p = shop.phone_number
+      p = shop.address

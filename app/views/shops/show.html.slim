@@ -1,0 +1,21 @@
+.container
+  .row
+    .col-5
+      = attachment_image_tag @shop, :shop_image, :fill, 300, 300
+    .col-7
+      .text-center
+        h2 = @shop.shop_name
+        br
+        h3 = @shop.phone_number
+        br
+        = @shop.introduction
+        br
+        = @shop.address
+        br
+        | 営業時間 #{@shop.opening_hours1}時~#{@shop.opening_hours2}時
+
+        br
+        | 定休日 #{@shop.holiday}
+        br
+        - if shop_signed_in? && @shop == current_shop
+          = link_to "編集", edit_shop_path(@shop)

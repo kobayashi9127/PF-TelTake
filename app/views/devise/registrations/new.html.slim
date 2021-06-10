@@ -15,7 +15,11 @@
         .field.mt-3
           = f.label "お店の電話番号"
           br
-          = f.text_field :phone_number, autofocus: true
+          = f.number_field :phone_number, autofocus: true
+        .field.mt-3
+          = f.label "メールアドレス"
+          br
+          = f.email_field :email, autofocus: true, autocomplete: "email"
         .field.mt-3
           = f.label "ログインID"
           br

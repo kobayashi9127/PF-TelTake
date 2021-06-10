@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_09_054150) do
+ActiveRecord::Schema.define(version: 2021_06_10_053304) do
+
+  create_table "foods", force: :cascade do |t|
+    t.string "food_name"
+    t.integer "price"
+    t.text "Introduction"
+    t.string "food_imge_id"
+    t.integer "shop_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "shops", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -19,11 +29,12 @@ ActiveRecord::Schema.define(version: 2021_06_09_054150) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "shop_name"
-    t.string "shop_imge_id"
+    t.string "shop_image_id"
     t.string "address"
     t.string "phone_number"
     t.string "holiday"
-    t.integer "opening_hours"
+    t.integer "opening_hours1"
+    t.integer "opening_hours2"
     t.string "login_id"
     t.text "introduction"
     t.boolean "is_deleated"
