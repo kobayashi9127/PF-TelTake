@@ -3,27 +3,4 @@
     h2
       | メニュー追加画面
 
-    = form_with model: @food, local:true do |f|
-      .field.mt-5
-        = f.label "画像"
-        br
-        = f.attachment_field :food_image
-        br
-      .field.mt-5
-        = f.label "料理名"
-        br
-        = f.text_field :food_name
-        br
-      .field.mt-5
-        = f.label "料理説明"
-        br
-        = f.text_area :introduction
-        br
-      .field.mt-5
-        = f.label "値段(税抜き)"
-        br
-        p #{f.text_field :price} 円
-
-        br
-      .field.mt-5
-        = f.submit 'メニューを追加する'
+    = render 'foods/form', food: @food

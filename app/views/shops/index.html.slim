@@ -5,7 +5,15 @@
 
   .row
     .col-10
-      - @shops.each do |shop|
-        = attachment_image_tag shop, :shop_image, :fill, 200, 200
-        = shop.shop_name
-        = shop.address
+      table
+        - @shops.each do |shop|
+          tr
+            td = link_to shop_path(shop.id) do
+                  = attachment_image_tag shop, :shop_image, :fill, 200, 200
+            td
+              table.table
+                tr
+                  td = link_to shop_path(shop.id) do
+                      = shop.shop_name
+                tr
+                  td = shop.address

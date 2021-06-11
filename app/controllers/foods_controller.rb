@@ -11,13 +11,24 @@ class FoodsController < ApplicationController
     redirect_to shop_path(current_shop)
   end
 
+  def show
+    @food = Food.find(params[:id])
+  end
+
   def edit
+    @food = Food.find(params[:id])
   end
 
   def update
+    @food = Food.find(params[:id])
+    @food.update(food_parms)
+    redirect_to shop_path(current_shop)
   end
 
   def destroy
+    @food = Food.find(params[:id])
+    @food.destroy
+    redirect_to shop_path(current_shop)
   end
 
   private

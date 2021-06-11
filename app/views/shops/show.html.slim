@@ -1,9 +1,9 @@
 .container
   .row
     .col-5
-      = attachment_image_tag @shop, :shop_image, :fill, 300, 300
-    .col-7
-      .text-center
+      .text-center = attachment_image_tag @shop, :shop_image, :fill, 300, 300
+    .row
+      .col-6.ml-5
         h2 = @shop.shop_name
         br
         h3 = @shop.phone_number
@@ -41,12 +41,14 @@
         tbody
         - @foods.each do |food|
           tr.h5
-            td = attachment_image_tag food, :food_image, :fill, 60, 60
-            td = food.food_name
+            td = link_to food_path(food.id) do
+                = attachment_image_tag food, :food_image, :fill, 60, 60
+            td = link_to food_path(food.id) do
+                = food.food_name
             td #{(food.price * 1.1).floor} 円
             - if shop_signed_in? && @shop == current_shop
               td
-                | 削除
+                = link_to "削除", food_path(food.id), method: :delete, data: { confirm: '削除しますか？' }
 
               td
-                | 編集
+                = link_to "編集", edit_food_path(food.id)

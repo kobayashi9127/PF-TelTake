@@ -1,0 +1,11 @@
+.container
+  .row
+    .col-5
+      .text-center.mt-3 = attachment_image_tag @food, :food_image, :fill, 300, 300
+    .col-7
+      .text-center
+        h2.mt-5 = @food.food_name
+        br
+        h5.mt-5 = @food.introduction
+        br
+        h5.mt-5 #{(@food.price * 1.1).floor} 円
