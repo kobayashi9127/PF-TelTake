@@ -15,8 +15,8 @@ ActiveRecord::Schema.define(version: 2021_06_10_053304) do
   create_table "foods", force: :cascade do |t|
     t.string "food_name"
     t.integer "price"
-    t.text "Introduction"
-    t.string "food_imge_id"
+    t.text "introduction"
+    t.string "food_image_id"
     t.integer "shop_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

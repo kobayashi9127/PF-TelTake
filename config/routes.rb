@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
   root to: 'homes#top'
   resources :shops, only: [:index, :show, :edit, :update, :destroy]
+  resources :foods, only: [:new, :create, :edit, :update, :destroy]
 end
