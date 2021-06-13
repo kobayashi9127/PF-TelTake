@@ -1,6 +1,6 @@
 class ShopsController < ApplicationController
   def index
-    @shops = Shop.order("RANDOM()").all
+    @shops = Shop.search(params[:search])
   end
 
   def show
@@ -24,7 +24,7 @@ class ShopsController < ApplicationController
   private
 
   def shop_params
-    params.require(:shop).permit(:shop_name, :shop_image, :address, :phone_number, :holiday, :introduction, :opening_hours1, :opening_hours2)
+    params.require(:shop).permit(:shop_name, :shop_image, :address, :phone_number, :holiday, :introduction, :opening_hours1, :opening_hours2, :genre_id)
   end
 
 end

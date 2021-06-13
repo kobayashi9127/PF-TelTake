@@ -7,4 +7,11 @@ class Shop < ApplicationRecord
   has_many :foods, dependent: :destroy
   belongs_to :genre, dependent: :destroy
   attachment :shop_image
+  def self.search(search) #self.でクラスメソッドとしている
+    if search # Controllerから渡されたパラメータが!= nilの場合は、titleカラムを部分一致検索
+      Shop.where(['address LIKE ?', "%#{search}%"])
+    else
+      Shop.order("RANDOM()").all #全てランダムで表示。
+    end
+  end
 end

@@ -1,34 +1,39 @@
 .container
   .row
     = form_with model:@shop, local:true do |f|
-      .field.mt-5
-        = f.label "お店名"
-        br
-        = f.text_field :shop_name
-      .field.mt-3
-        = f.label "お店の電話番号"
-        br
-        = f.text_field :phone_number
-      .field.mt-3
-        = f.label "ジャンル"
-        br
-        /= f.select :genre
-      .field.mt-3
-        = f.label "紹介文"
-        br
-        = f.text_area :introduction
-      .field.mt-3
-        = f.label "営業時間"
-        br
-        p #{f.text_field :opening_hours1}時から
-          #{f.text_field :opening_hours2}時
+        .field.mt-5
+          = f.label "お店名"
+          br
+          = f.text_field :shop_name
+        .field.mt-3
+          = f.label "お店画像"
+          br
+          = f.attachment_field :shop_image
+          br
+        .field.mt-3
+          = f.label "お店の電話番号"
+          br
+          = f.text_field :phone_number
+        .field.mt-3
+          = f.label "ジャンル"
+          br
+          = f.collection_select :genre_id, Genre.all,:id, :genre_name, include_blank: "--選択してください--"
+          /form.collection_select(保存されるカラム名, オブジェクトの配列, カラムに保存される項目, 選択肢に表示されるカラム名
 
-      .field.mt-3
-        = f.label "定休日"
-        br
-        = f.text_field :holiday
-      .field.mt-3
-        = f.attachment_field :shop_image
-        br
-      .field.mt-3
-        = f.submit "変更する"
+        .field.mt-3
+          = f.label "紹介文"
+          br
+          = f.text_area :introduction
+        .field.mt-3
+          = f.label "営業時間"
+          br
+          p #{f.text_field :opening_hours1}時から
+            #{f.text_field :opening_hours2}時
+
+        .field.mt-3
+          = f.label "定休日"
+          br
+          = f.text_field :holiday
+
+        .field.mt-3
+          = f.submit "変更する"

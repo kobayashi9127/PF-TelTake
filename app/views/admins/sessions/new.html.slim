@@ -1,0 +1,19 @@
+.container
+  .text-center
+    h2
+      | 管理者ログイン
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .field.mt-5
+        = f.label "ログインID"
+        br
+        = f.text_field :login_id, autofocus: true, autocomplete: "login_id"
+      .field.mt-3
+        = f.label "パスワード"
+        br
+        = f.password_field :password, autocomplete: "current-password"
+      - if devise_mapping.rememberable?
+        .field.mt-3
+          = f.check_box :remember_me
+          = f.label :remember_me
+      .actions.mt-3
+        = f.submit "ログイン", class: "btn btn-secondary"

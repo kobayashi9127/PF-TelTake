@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 2021_06_13_074007) do
     t.string "login_id"
     t.text "introduction"
     t.boolean "is_deleated"
+    t.integer "genre_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_shops_on_email", unique: true

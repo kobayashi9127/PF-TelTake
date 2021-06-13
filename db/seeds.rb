@@ -11,3 +11,23 @@ Admin.create!(
    email: 'tel@take.com',
    password: 'take123',
 )
+
+Genre.create!(
+  [
+    {
+     genre_name: '和食'
+    },
+    {
+     genre_name: '中華'
+    },
+    {
+     genre_name: '洋食・西洋'
+    },
+    {
+     genre_name: 'アジア'
+     },
+    {
+     genre_name: 'スイーツ'
+     },
+  ]
+)

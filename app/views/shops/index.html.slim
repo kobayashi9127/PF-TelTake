@@ -1,4 +1,13 @@
 .container
+  = form_tag(shops_path,:method => 'get') do
+    = text_field_tag :search
+    = submit_tag '検索'
+
+    /= form_with url: shops_path do |f|
+     = f.text_field :search
+     /placeholderを使いたい
+     = f.submit_tag '検索'
+
   .row
     h2.text-center
       | お店一覧
