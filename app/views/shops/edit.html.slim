@@ -36,4 +36,6 @@
           = f.text_field :holiday
 
         .field.mt-3
-          = f.submit "変更する"
+          = f.submit "変更する", class: "btn btn-success"
+          br
+          .mt-3 = link_to "退会する", shop_path(current_shop.id), method: :delete, data: { confirm: '退会しますか？' }, class: "btn btn-danger"

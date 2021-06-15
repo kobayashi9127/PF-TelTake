@@ -1,0 +1,17 @@
+.container
+  .row
+    .row.mt-5
+    .col-12
+      table.table
+        thead
+          tr
+            th 店名
+            th 住所
+            th 電話番号
+        tbody
+        - @shops.each do |shops|
+          tr
+            td = link_to admins_shop_path(shops.id) do
+                = shops.shop_name
+            td = shops.address
+            td = shops.phone_number

@@ -11,11 +11,11 @@
         .field.mt-3
           = f.label "お店の住所"
           br
-          = f.text_field :address, autofocus: true
+          = f.text_field :address, autofocus: true, placeholder: "◯◯県◯◯市×-×"
         .field.mt-3
           = f.label "お店の電話番号"
           br
-          = f.number_field :phone_number, autofocus: true
+          = f.number_field :phone_number, autofocus: true, placeholder: "ハイフンなし"
         .field.mt-3
           = f.label "メールアドレス"
           br

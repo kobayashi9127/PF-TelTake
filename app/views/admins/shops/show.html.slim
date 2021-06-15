@@ -1,0 +1,25 @@
+.container
+  .row
+    .col-5
+      .text-center = attachment_image_tag @shop, :shop_image, :fill, 300, 300
+    .col-6.ml-5
+      h2 = @shop.shop_name
+      br
+      h3 = @shop.phone_number
+      br
+      .col-6
+        = @shop.introduction
+        br
+        .mt-3
+        | 住所 : #{@shop.address}
+
+        br
+        .mt-1
+        | 営業時間 : #{@shop.opening_hours1}時~#{@shop.opening_hours2}時
+
+        br
+        .h5.mt-2
+        | 定休日 : #{@shop.holiday}
+
+        br
+        = link_to "削除する", admins_shop_path(@shop.id), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger"
