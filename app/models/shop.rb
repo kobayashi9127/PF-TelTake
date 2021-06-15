@@ -11,7 +11,7 @@ class Shop < ApplicationRecord
     if search # Controllerから渡されたパラメータが!= nilの場合は、titleカラムを部分一致検索
       Shop.where(['address LIKE ?', "%#{search}%"])
     else
-      Shop.order("RANDOM()").all #全てランダムで表示。
+      Shop.order("RAND()").all #全てランダムで表示。
     end
   end
 end
