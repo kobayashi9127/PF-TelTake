@@ -1,6 +1,6 @@
 class ShopsController < ApplicationController
   def index
-    @shops = Shop.search(params[:search])
+    @shops = Shop.search(params[:search],params[:genre_id])
   end
 
   def show
