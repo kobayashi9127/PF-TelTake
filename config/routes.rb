@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :shops
 
   root to: 'shops#index'
+  get 'about' => 'homes#about'
   resources :shops, only: [:index, :show, :edit, :update, :destroy]
   resources :foods, only: [:new, :create, :edit, :update, :destroy, :show]
 
