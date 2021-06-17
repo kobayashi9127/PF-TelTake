@@ -44,11 +44,12 @@
             td = link_to food_path(food.id) do
                 = attachment_image_tag food, :food_image, :fill, 60, 60
             td = link_to food_path(food.id) do
-                = food.food_name
-            td #{(food.price * 1.1).floor} 円
+                .mt-3 = food.food_name
+            td
+              .mt-3 #{(food.price * 1.1).floor} 円
             - if shop_signed_in? && @shop == current_shop
               td
-                = link_to "削除", food_path(food.id), method: :delete, data: { confirm: '削除しますか？' }
+                .mt-3 = link_to "削除", food_path(food.id), method: :delete, data: { confirm: '削除しますか？' }
 
               td
-                = link_to "編集", edit_food_path(food.id)
+                .mt-3 = link_to "編集", edit_food_path(food.id)
