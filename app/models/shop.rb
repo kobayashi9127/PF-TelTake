@@ -9,7 +9,7 @@ class Shop < ApplicationRecord
   attachment :shop_image
   def self.search(search,genre_id) #self.でクラスメソッドとしている
     if search.blank? && genre_id.blank?
-      Shop.order("RAND()").all #全てランダムで表示。
+      Shop.order("RANDOM()").all #全てランダムで表示。
     elsif search.empty?
       Shop.where(genre_id: genre_id)
     elsif genre_id.blank?

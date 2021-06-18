@@ -1,6 +1,6 @@
 .container
-  .row
-    .col-4.mt-5
+  .row.mt-5
+    .col-4
       = form_with url: shops_path, method: :get do |f|
         h5
           | キーワード検索
@@ -8,7 +8,7 @@
         p
           | (住所や店名)
 
-        = f.text_field :search, placeholder: "◯◯県◯◯市"
+        = f.text_field :search, placeholder: "◯◯県◯◯市など、、"
         br
         .mt-3
           = f.collection_select :genre_id, Genre.all,:id, :genre_name, include_blank: "ジャンル"
@@ -27,12 +27,12 @@
 
                   tr
                     td = link_to shop_path(shop.id) do
-                        = attachment_image_tag shop, :shop_image, :fill, 200, 200
+                        = attachment_image_tag shop, :shop_image, :fill, 250, 200
                     td
                       table.table
                         tr
-                          td = link_to shop_path(shop.id) do
-                              = shop.shop_name
+                          td = link_to shop_path(shop.id), class: 'text-dark' do
+                              .h4 = shop.shop_name
                         tr
                           td = shop.address
                         tr
