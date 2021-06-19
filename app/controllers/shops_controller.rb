@@ -1,6 +1,6 @@
 class ShopsController < ApplicationController
   def index
-    @shops = Shop.search(params[:search],params[:genre_id])
+    @shops = Shop.search(params[:search],params[:genre_id]).page(params[:page]).reverse_order
   end
 
   def show

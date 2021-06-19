@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :admins, controllers: {
   sessions: 'admins/sessions'
 }
-  devise_for :shops
+  devise_for :shops, controllers: {
+    registrations: 'shops/registrations'
+  }
 
   root to: 'shops#index'
   get 'about' => 'homes#about'

@@ -16,7 +16,7 @@ html
         .container
           .navbar-brand
             = link_to root_path do
-              = image_tag('logo.png', :size =>'160x90')
+              = image_tag('img/logo.png', :size =>'160x90')
 
 
           .navbar.ml-auto.h5
@@ -28,3 +28,5 @@ html
             .nav-item = link_to "お問い合わせ", about_path, class: 'nav-link text-dark'
     .main
       = yield
+
+    footer

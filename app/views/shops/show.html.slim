@@ -1,7 +1,7 @@
 .container
   .row.mt-5
     .col-5
-      .text-center = attachment_image_tag @shop, :shop_image, :fill, 300, 300
+      .text-center = attachment_image_tag(@shop, :shop_image, fallback: 'img/no_image.png', class: 'show_shop_image')
     .col-6.ml-5
       h2 = @shop.shop_name
       br

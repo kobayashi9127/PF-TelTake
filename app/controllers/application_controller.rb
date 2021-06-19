@@ -7,11 +7,6 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:shop_name, :address, :phone_number, :login_id, :email, :encrypted_password])
   end
 
-  def after_sign_up_path_for(resource)
-    edit_shop_path(resource)
-  end
-
-
   def after_sign_in_path_for(resource)
     shop_path(resource)
   end
