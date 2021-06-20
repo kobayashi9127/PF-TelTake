@@ -1,5 +1,5 @@
 class FoodsController < ApplicationController
-
+ before_action :authenticate_shop!, except: [:show]
   def new
     @food = Food.new
   end

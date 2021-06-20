@@ -1,6 +1,7 @@
 class ShopsController < ApplicationController
+ before_action :authenticate_shop!, except: [:show, :index]
   def index
-    @shops = Shop.search(params[:search],params[:genre_id]).page(params[:page]).reverse_order
+    @shops = Shop.search(params[:search],params[:genre_id],false).page(params[:page]).reverse_order
   end
 
   def show

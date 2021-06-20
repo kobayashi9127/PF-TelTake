@@ -1,6 +1,7 @@
 class Admins::ShopsController < ApplicationController
+  before_action :authenticate_admin!
   def index
-    @shops = Shop.search(params[:search])
+    @shops = Shop.search(params[:search],nil,true)
   end
   def show
     @shop = Shop.find(params[:id])

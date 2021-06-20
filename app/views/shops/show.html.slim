@@ -35,7 +35,7 @@
             th
             th 料理名
             th 値段(税込)
-            - if shop_signed_in? && @shop == current_shop
+            - if  @shop.current_shop?(current_shop)
               th
               th
         tbody
