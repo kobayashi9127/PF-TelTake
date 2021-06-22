@@ -5,6 +5,7 @@ class Shop < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :foods, dependent: :destroy
+  has_many :comment, dependent: :destroy
   belongs_to :genre, dependent: :destroy
   attachment :shop_image
 
@@ -12,7 +13,6 @@ class Shop < ApplicationRecord
   def current_shop?(current_shop)
     self == current_shop
   end
-
 
   def self.search(search,genre_id,admin) #self.でクラスメソッドとしている
     if admin
@@ -32,9 +32,7 @@ class Shop < ApplicationRecord
         Shop.keyword(search).where(genre_id: genre_id) #where(['検索したいカラム名 ? OR 検索したいカラム名 LIKE ? OR 検索したいカラム名 LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%"])
       end
     end
-
   end
-
 
   def self.keyword(search)
     Shop.where(['phone_number LIKE(?) OR address LIKE(?) OR shop_name LIKE(?)', "%#{search}%", "%#{search}%", "%#{search}%"])

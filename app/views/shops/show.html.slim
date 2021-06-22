@@ -23,9 +23,16 @@
 
         br
       .mt-2
-      - if shop_signed_in? && @shop == current_shop
-          = link_to "お店情報編集", edit_shop_path(@shop), class: "mr-2 btn btn-secondary"
-          = link_to "メニュー追加", new_food_path, class: "btn btn-secondary"
+      - if @shop.current_shop?(current_shop)
+        = link_to "お店情報編集", edit_shop_path(@shop), class: "mr-2 btn btn-secondary"
+        = link_to "メニュー追加", new_food_path, class: "btn btn-secondary"
+        br
+        = link_to "コメント一覧", shop_comments_path(@shop)
+      - else
+        = form_with(model:[@shop, @comment], local: true) do |f|
+          = f.text_area :comment, rows:'5',placeholder: "もし、よろしければ、料理の感想など、お店にメッセージをお願いします。"
+          br
+          = f.submit "送信する"
 
   .row.mt-5
     .col-12
@@ -35,7 +42,7 @@
             th
             th 料理名
             th 値段(税込)
-            - if  @shop.current_shop?(current_shop)
+            - if @shop.current_shop?(current_shop)
               th
               th
         tbody
@@ -47,7 +54,7 @@
                 .mt-3 = food.food_name
             td
               .mt-3 #{(food.price * 1.1).floor} 円
-            - if shop_signed_in? && @shop == current_shop
+            - if @shop.current_shop?(current_shop)
               td
                 .mt-3 = link_to "削除", food_path(food.id), method: :delete, data: { confirm: '削除しますか？' }, class: "btn btn-danger"
 

@@ -8,7 +8,9 @@ Rails.application.routes.draw do
 
   root to: 'shops#index'
   get 'about' => 'homes#about'
-  resources :shops, only: [:index, :show, :edit, :update, :destroy]
+  resources :shops, only: [:index, :show, :edit, :update, :destroy] do
+    resources :comments, only: [:create, :destroy]
+  end
   resources :foods, only: [:new, :create, :edit, :update, :destroy, :show]
 
   namespace :admins do
