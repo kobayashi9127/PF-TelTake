@@ -1,0 +1,16 @@
+.container.mt-5
+  .row
+    .row.mt-5
+    .col-12
+      table.table
+        thead
+          tr
+            th コメント
+            th
+            th 日付
+        tbody
+          - @comments.each do |comment|
+            tr
+             td = comment.body
+             td
+             td = comment.created_at

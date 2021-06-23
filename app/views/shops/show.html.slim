@@ -5,7 +5,7 @@
     .col-6.ml-5
       h2 = @shop.shop_name
       br
-      h3 = @shop.phone_number
+      .ml-3.h3 = @shop.phone_number
       br
       .col-6
         = @shop.introduction
@@ -29,8 +29,11 @@
         br
         = link_to "コメント一覧", shop_comments_path(@shop)
       - else
-        = form_with(model:[@shop, @comment], local: true) do |f|
-          = f.text_area :comment, rows:'5',placeholder: "もし、よろしければ、料理の感想など、お店にメッセージをお願いします。"
+        .ml-2.mt-3 = form_with(model:[@shop, @comment], local: true) do |f|
+          = f.label "お店にコメント"
+          br
+          = f.text_area :body, rows:'3',placeholder: "よろしければ、料理の感想などお願いします。"
+          = f.hidden_field :shop_id, :value => @shop.id
           br
           = f.submit "送信する"
 

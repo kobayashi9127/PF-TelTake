@@ -1,10 +1,14 @@
 class CommentsController < ApplicationController
 
+  def index
+    @shop = current_shop
+    @comments = @shop.comments
+  end
+
   def create
-    @comment = Comment.new(comment_params)
-    @shop = Shop.find(params[:id])
+    @comment = Comment.new(comment_parms)
     @comment.save
-    redirect_back(fallback_location: shop_path(@shop.id))
+    redirect_to shop_path(@comment.shop.id)
   end
 
   def destroy
@@ -13,7 +17,7 @@ class CommentsController < ApplicationController
   end
 
   private
-  def comment_params
+  def comment_parms
     params.require(:comment).permit(:body, :shop_id)
   end
 
