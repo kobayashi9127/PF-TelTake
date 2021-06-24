@@ -1,6 +1,15 @@
 .container.mt-5
   .row
-    .row.mt-5
+    .col-12.text-center
+      = form_with url: admins_shops_path, method: :get do |f|
+        h5
+          | 検索（住所、店名、電話番号）
+
+        = f.text_field :search, placeholder: "入力してください"
+
+        .mt-2= f.submit '検索'
+
+  .row.mt-3
     .col-12
       table.table
         thead

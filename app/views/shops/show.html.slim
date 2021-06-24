@@ -27,7 +27,8 @@
         = link_to "お店情報編集", edit_shop_path(@shop), class: "mr-2 btn btn-secondary"
         = link_to "メニュー追加", new_food_path, class: "btn btn-secondary"
         br
-        = link_to "コメント一覧", shop_comments_path(@shop)
+
+        .mt-2 = link_to "コメント一覧", shop_comments_path(@shop), class: "btn btn-outline-info"
       - else
         .ml-2.mt-3 = form_with(model:[@shop, @comment], local: true) do |f|
           = f.label "お店にコメント"
