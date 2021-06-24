@@ -1,21 +1,21 @@
 = form_with model: food, local:true do |f|
       .field.mt-5
-        = f.label "画像"
+        = f.label "画像(必須)"
         br
         = f.attachment_field :food_image
         br
       .field.mt-5
-        = f.label "料理名"
+        = f.label "料理名(必須)"
         br
         = f.text_field :food_name
         br
       .field.mt-5
-        = f.label "料理説明"
+        = f.label "料理説明(必須)"
         br
         = f.text_area :introduction
         br
-      .field.mt-5
-        = f.label "値段(税抜き)"
+      .field.mt-5.ml-3
+        = f.label "値段(税抜き)(必須)"
         br
         p #{f.text_field :price} 円
 

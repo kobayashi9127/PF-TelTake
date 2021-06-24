@@ -36,6 +36,8 @@
           = f.hidden_field :shop_id, :value => @shop.id
           br
           = f.submit "送信する"
+        - if flash[:notice]
+          .flash = flash[:notice]
 
   .row.mt-5
     .col-12

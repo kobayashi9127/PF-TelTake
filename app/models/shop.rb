@@ -9,6 +9,14 @@ class Shop < ApplicationRecord
   belongs_to :genre, dependent: :destroy
   attachment :shop_image
 
+  validates :shop_name, presence: true
+  validates :address, presence: true
+  validates :phone_number, presence: true
+  validates :holiday, presence: true
+  validates :opening_hours1, presence: true
+  validates :opening_hours2, presence: true
+  validates :login_id, presence: true
+  validates :genre_id, presence: true
 
   def current_shop?(current_shop)
     self == current_shop

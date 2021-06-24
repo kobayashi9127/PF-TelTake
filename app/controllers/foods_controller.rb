@@ -7,8 +7,11 @@ class FoodsController < ApplicationController
   def create
     @food = Food.new(food_parms)
     @food.shop_id = current_shop.id
-    @food.save
-    redirect_to shop_path(current_shop)
+    if @food.save
+      redirect_to shop_path(current_shop)
+    else
+      render :new
+    end
   end
 
   def show
@@ -21,8 +24,11 @@ class FoodsController < ApplicationController
 
   def update
     @food = Food.find(params[:id])
-    @food.update(food_parms)
-    redirect_to shop_path(current_shop)
+    if @food.update(food_parms)
+      redirect_to shop_path(current_shop)
+    else
+      render :edit
+    end
   end
 
   def destroy

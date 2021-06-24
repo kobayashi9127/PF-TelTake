@@ -7,8 +7,12 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_parms)
-    @comment.save
-    redirect_to shop_path(@comment.shop.id)
+    if @comment.save
+      flash[:notice] = "コメントを送信しました!"
+      redirect_to shop_path(@comment.shop.id)
+    else
+      redirect_to shop_path(@comment.shop.id)
+    end
   end
 
   def destroy

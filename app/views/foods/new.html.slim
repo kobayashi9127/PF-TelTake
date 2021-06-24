@@ -3,4 +3,8 @@
     h2
       | メニュー追加画面
 
+    - if @food.errors.any?
+      .error
+        | #{@food.errors.count} 件の入力ミス
+
     = render 'foods/form', food: @food
