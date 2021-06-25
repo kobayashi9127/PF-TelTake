@@ -6,7 +6,11 @@ class Shop < ApplicationRecord
 
   has_many :foods, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+  has_many :notifications, dependent: :destroy
+
   belongs_to :genre, dependent: :destroy
+
   attachment :shop_image
 
   validates :shop_name, presence: true

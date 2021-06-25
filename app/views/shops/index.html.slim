@@ -23,21 +23,19 @@
 
       .text-center
           .mx-auto
-
-            table.mt-5
-              - @shops.each do |shop|
-
-                  tr
-                    td = link_to shop_path(shop.id) do
-                        = attachment_image_tag(shop, :shop_image, :fill, 250, 200, fallback: 'img/no_image.png', class: 'index_shop_image')
-                    td
-                      table.table
-                        tr
-                          td = link_to shop_path(shop.id), class: 'text-dark' do
-                              .h4 = shop.shop_name
-                        tr
-                          td = shop.address
-                        tr
-                          td = shop.phone_number
+            table.mt-5.mb-5
+                - @shops.each do |shop|
+                    tr.mb-5
+                      td = link_to shop_path(shop.id) do
+                          = attachment_image_tag(shop, :shop_image, :fill, 250, 200, fallback: 'img/no_image.png', class: 'index_shop_image')
+                      td
+                        table.table
+                          tr
+                            td = link_to shop_path(shop.id), class: 'text-dark' do
+                                .h4 = shop.shop_name
+                          tr
+                            td = shop.address
+                          tr
+                            td = shop.phone_number
 
             .h4.ml-5 = paginate @shops

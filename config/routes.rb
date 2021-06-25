@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:index, :create, :destroy]
   end
   resources :foods, only: [:new, :create, :edit, :update, :destroy, :show]
+  resources :notifications, only: [:index]
 
   namespace :admins do
     resources :shops, only: [:index, :show, :destroy]
