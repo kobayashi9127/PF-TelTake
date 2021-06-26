@@ -74,7 +74,6 @@ ActiveRecord::Schema.define(version: 2021_06_25_040817) do
     t.integer "opening_hours2"
     t.string "login_id"
     t.text "introduction"
-    t.boolean "is_deleated"
     t.integer "genre_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -41,7 +41,6 @@ class DeviseCreateShops < ActiveRecord::Migration[5.2]
       t.integer :opening_hours2
       t.string :login_id
       t.text :introduction
-      t.boolean :is_deleated
       t.integer :genre_id
       t.timestamps null: false
     end

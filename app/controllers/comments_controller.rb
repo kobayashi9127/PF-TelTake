@@ -19,6 +19,7 @@ class CommentsController < ApplicationController
       flash[:notice] = "コメントを送信しました!"
       redirect_to shop_path(@comment.shop.id)
     else
+      flash.now[:alert] = "文字を入力して下さい"
       redirect_to shop_path(@comment.shop.id)
     end
 

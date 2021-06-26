@@ -43,7 +43,8 @@
           = f.submit "送信する"
         - if flash[:notice]
           .flash = flash[:notice]
-
+        - else flash[:alert]
+          .alert = flash[:alert]
   .row.mt-5
     .col-12
       table.table
