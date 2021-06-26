@@ -18,14 +18,20 @@ Genre.create!(
      genre_name: '和食'
     },
     {
-     genre_name: '中華'
+     genre_name: '洋食'
     },
     {
-     genre_name: '洋食・西洋'
+     genre_name: '中華料理'
     },
     {
-     genre_name: 'アジア'
+     genre_name: 'アジア料理'
      },
+    {
+     genre_name: 'ヨーロッパ料理'
+    },
+    {
+     genre_name: '肉料理'
+    },
     {
      genre_name: 'スイーツ'
      },

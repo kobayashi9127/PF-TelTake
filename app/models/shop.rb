@@ -6,7 +6,6 @@ class Shop < ApplicationRecord
 
   has_many :foods, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
   has_many :notifications, dependent: :destroy
 
   belongs_to :genre, dependent: :destroy
@@ -41,14 +40,23 @@ class Shop < ApplicationRecord
       elsif genre_id.blank?
         Shop.keyword(search)
       else
-        Shop.keyword(search).where(genre_id: genre_id) #where(['検索したいカラム名 ? OR 検索したいカラム名 LIKE ? OR 検索したいカラム名 LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%"])
+        Shop.keyword(search).where(genre_id: genre_id)
       end
     end
   end
 
   def self.keyword(search)
-    Shop.where(['phone_number LIKE(?) OR address LIKE(?) OR shop_name LIKE(?)', "%#{search}%", "%#{search}%", "%#{search}%"])
+    Shop.where(['phone_number LIKE(?) OR address LIKE(?) OR shop_name LIKE(?)', "%#{search}%", "%#{search}%", "%#{search}%"]) #where(['検索したいカラム名 ? OR 検索したいカラム名 LIKE ? OR 検索したいカラム名 LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%"])
   end
 
+
+  def save_notification_comment!(comment_id)
+        notification = notifications.new(
+        shop_id: id,
+        comment_id: comment_id,
+        action: 'comment'
+      )
+      notification.save if notification.valid?
+  end
 
 end

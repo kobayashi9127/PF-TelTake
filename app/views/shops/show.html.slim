@@ -29,6 +29,10 @@
         br
 
         .mt-2 = link_to "コメント一覧", shop_comments_path(@shop), class: "btn btn-outline-info"
+        - if unchecked_notifications.any?
+          p.unchecked-text
+            | 新着コメントがあります！
+
       - else
         .ml-2.mt-3 = form_with(model:[@shop, @comment], local: true) do |f|
           = f.label "お店にコメント"

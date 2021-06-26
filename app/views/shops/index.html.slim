@@ -1,6 +1,6 @@
 .container
   .row.mt-1
-    .col-12.text-center = image_tag('img/topp.png', :size =>'800x300')
+    .col-12.text-center.top-img = image_tag('img/topp.png', :size =>'800x300')
   .row
     .col-4.mt-5
       = form_with url: shops_path, method: :get do |f|
@@ -32,7 +32,7 @@
                         table.table
                           tr
                             td = link_to shop_path(shop.id), class: 'text-dark' do
-                                .h4 = shop.shop_name
+                              .h4 = shop.shop_name
                           tr
                             td = shop.address
                           tr

@@ -52,7 +52,6 @@ ActiveRecord::Schema.define(version: 2021_06_25_040817) do
 
   create_table "notifications", force: :cascade do |t|
     t.integer "shop_id"
-    t.integer "visited_id"
     t.integer "comment_id"
     t.string "action"
     t.boolean "checked", default: false, null: false
