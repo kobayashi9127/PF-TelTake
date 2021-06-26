@@ -34,7 +34,7 @@ class Shop < ApplicationRecord
      end
     else
       if search.blank? && genre_id.blank?
-        Shop.order("RANDOM()").all#全てランダムで表示。
+        Shop.order("RAND()").all#全てランダムで表示。
       elsif search.empty?
         Shop.where(genre_id: genre_id)
       elsif genre_id.blank?
