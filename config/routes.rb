@@ -9,10 +9,9 @@ Rails.application.routes.draw do
   root to: 'shops#index'
   get 'about' => 'homes#about'
   resources :shops, only: [:index, :show, :edit, :update, :destroy] do
-    resources :comments, only: [:index, :create, :destroy]
+    resources :comments, only: [:index, :create]
   end
   resources :foods, only: [:new, :create, :edit, :update, :destroy, :show]
-  resources :notifications, only: [:index]
 
   namespace :admins do
     resources :shops, only: [:index, :show, :destroy]

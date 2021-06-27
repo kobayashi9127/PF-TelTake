@@ -2,7 +2,8 @@ class CommentsController < ApplicationController
 
   def index
     @shop = current_shop
-    @comments = @shop.comments
+    @comments = @shop.comments.order(created_at: :desc).page(params[:page]).per(10)
+    # 新しい順に１０ずつ表示
     @notifications = current_shop.notifications
     @notifications.where(checked: false).each do |notification|
       notification.update_attributes(checked: true)
@@ -22,12 +23,6 @@ class CommentsController < ApplicationController
       flash.now[:alert] = "文字を入力して下さい"
       redirect_to shop_path(@comment.shop.id)
     end
-
-  end
-
-  def destroy
-    comment = Comment.find(params[:id])
-    comment.destroy
   end
 
   private

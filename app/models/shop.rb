@@ -15,11 +15,8 @@ class Shop < ApplicationRecord
   validates :shop_name, presence: true
   validates :address, presence: true
   validates :phone_number, presence: true
-  validates :holiday, presence: true
-  validates :opening_hours1, presence: true
-  validates :opening_hours2, presence: true
   validates :login_id, presence: true
-  validates :genre_id, presence: true
+
 
   def current_shop?(current_shop)
     self == current_shop
@@ -34,7 +31,7 @@ class Shop < ApplicationRecord
      end
     else
       if search.blank? && genre_id.blank?
-        Shop.order("RAND()").all#全てランダムで表示。
+        Shop.order("RANDOM()").all#全てランダムで表示。
       elsif search.empty?
         Shop.where(genre_id: genre_id)
       elsif genre_id.blank?

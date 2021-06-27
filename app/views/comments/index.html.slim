@@ -15,3 +15,6 @@
              td = comment.body
              td
              td = comment.created_at.strftime("%Y年%m月%d日")
+
+
+      = paginate @comments
