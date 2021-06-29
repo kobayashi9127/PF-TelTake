@@ -30,13 +30,13 @@ class Shop < ApplicationRecord
        Shop.keyword(search)
      end
     else
-      if search.blank? && genre_id.blank?
-        Shop.order("RAND()").all#全てランダムで表示。
-      elsif search.empty?
+      if search.blank? && genre_id.blank? #両方空の場合
+        Shop.order("RAND()").all #全てランダムで表示。
+      elsif search.empty? #searchが空でジャンルのみの検索
         Shop.where(genre_id: genre_id)
-      elsif genre_id.blank?
+      elsif genre_id.blank? #ジャンルが空の場合
         Shop.keyword(search)
-      else
+      else　　　　　　　　　　#両方有りの場合
         Shop.keyword(search).where(genre_id: genre_id)
       end
     end
