@@ -8,6 +8,10 @@ class FoodsController < ApplicationController
     @food = Food.new(food_parms)
     @food.shop_id = current_shop.id
     if @food.save
+       tags = Vision.get_image_data(@food.food_image)
+       tags.each do |tag|
+        food.tags.create(name: tag)
+       end
       redirect_to shop_path(current_shop)
     else
       render :new
