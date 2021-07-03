@@ -29,6 +29,11 @@ class FoodsController < ApplicationController
   def update
     food = Food.find(params[:id])
     if food.update(food_parms)
+       tags = Vision.get_image_data(food.food_image)
+       food.tags.destroy(name: tags)
+       tags.each do |tag|
+        food.tags.create(name: tag)
+       end
       redirect_to shop_path(current_shop)
     else
       render :edit
