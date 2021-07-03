@@ -1,5 +1,6 @@
 class Food < ApplicationRecord
   belongs_to :shop
+  has_many :tags
   attachment :food_image
 
   validates :food_image, presence: true

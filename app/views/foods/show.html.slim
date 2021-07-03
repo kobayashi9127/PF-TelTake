@@ -13,3 +13,6 @@
                 td.h5.mt-5 = @food.introduction
               tr
                 td.h5.mt-5 #{(@food.price * 1.1).floor} 円
+              tr
+                - @food.tags.each do |tag|
+                  td.mr-1.btn.btn-secondary.btn-sm.disabled = tag.name
