@@ -30,7 +30,7 @@ class FoodsController < ApplicationController
     food = Food.find(params[:id])
     if food.update(food_parms)
        tags = Vision.get_image_data(food.food_image)
-       food.tags.destroy(name: tags)
+       food.tags.destroy_all
        tags.each do |tag|
         food.tags.create(name: tag)
        end
