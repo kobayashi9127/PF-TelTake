@@ -5,7 +5,7 @@
     .col-6.ml-5
       h2 = @shop.shop_name
       br
-      .ml-3.h3 = @shop.phone_number
+      .ml-3.h3 = link_to @shop.phone_number, "tel:" + @shop.phone_number
       br
       .col-6
         = @shop.introduction
