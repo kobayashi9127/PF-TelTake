@@ -36,7 +36,7 @@ class Shop < ApplicationRecord
         Shop.where(genre_id: genre_id)
       elsif genre_id.blank? #ジャンルが空の場合
         Shop.keyword(search)
-      else　　　　　　　　　　#両方有りの場合
+      else #両方有りの場合
         Shop.keyword(search).where(genre_id: genre_id)
       end
     end
