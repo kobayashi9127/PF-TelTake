@@ -2,42 +2,47 @@
   .row.mt-5
     .col-5
       .text-center = attachment_image_tag(@shop, :shop_image, fallback: 'img/no_image.png', class: 'show_shop_image')
-    .col-6.ml-5
-      h2 = @shop.shop_name
-      br
-      .ml-3.h3 = link_to @shop.phone_number, "tel:" + @shop.phone_number
-      br
-      .col-6
-        = @shop.introduction
-        br
-        .mt-3
-        | 住所 : #{@shop.address}
+    .col-4.ml-5
+      h2.text-center.mt-4.font-weight-bold
+        |・#{@shop.shop_name}
 
-        br
-        .mt-1
-        | 営業時間 : #{@shop.opening_hours1}時~#{@shop.opening_hours2}時
+      br
+      .h2.text-center = link_to @shop.phone_number, "tel:" + @shop.phone_number
+      br
+      .col-10.ml-5
+        .card
+          .pt-2 = @shop.introduction
+          br
+        .card.mt-3
+          .mt-2
+            | 住所 : #{@shop.address}
 
-        br
-        .h5.mt-2
-        | 定休日 : #{@shop.holiday}
+            br
+
+            | 営業時間 : #{@shop.opening_hours1}時~#{@shop.opening_hours2}時
+
+            br
+
+            | 定休日 : #{@shop.holiday}
 
         br
       .mt-2
       - if @shop.current_shop?(current_shop)
-        = link_to "お店情報編集", edit_shop_path(@shop), class: "mr-2 btn btn-secondary"
-        = link_to "メニュー追加", new_food_path, class: "btn btn-secondary"
-        br
+        .text-center
+          = link_to "お店情報編集", edit_shop_path(@shop), class: "mr-2 btn btn-secondary"
+          = link_to "メニュー追加", new_food_path, class: "btn btn-secondary"
+          br
 
-        .mt-2 = link_to "コメント一覧", shop_comments_path(@shop), class: "btn btn-outline-info"
+        .mt-2.ml-5 = link_to "コメント一覧", shop_comments_path(@shop), class: "btn btn-outline-info"
         - if unchecked_notifications.any?
           p.unchecked-text
             | 新着コメントがあります！
 
       - else
-        .ml-2.mt-3 = form_with(model:[@shop, @comment], local: true) do |f|
+        .text-center.ml-2.mt-1 = form_with(model:[@shop, @comment], local: true) do |f|
           = f.label "お店にコメント"
           br
-          = f.text_area :body, rows:'3',placeholder: "よろしければ、料理の感想などお願いします。"
+          = f.text_area :body, rows:'2',placeholder: "よろしければ、料理の感想などお願いします。"
           = f.hidden_field :shop_id, :value => @shop.id
           br
           = f.submit "送信する"
