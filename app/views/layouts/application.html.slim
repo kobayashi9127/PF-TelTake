@@ -5,27 +5,28 @@ html
       | TelTake
     = csrf_meta_tags
     = csp_meta_tag
-    meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"
+    meta name="viewport" content="width=device-width, initial-scale=1"
 
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
-    header.shadow-sm
-      .navbar.navbar-expand-lg.navbar-light
-        .container
-          .navbar-brand
-            = link_to root_path do
-              = image_tag('img/logo.png', :size =>'160x90')
+    header
+      .shadow-sm
+        .navbar.navbar-expand-lg.navbar-light
+          .container
+            .navbar-brand
+              = link_to root_path do
+                = image_tag('img/logo.png', :size =>'160x90')
 
 
-          .navbar.ml-auto.h5
-            - if shop_signed_in?
-              .nav-item = link_to "ログアウト", destroy_shop_session_path, method: :delete, class: 'nav-link text-dark'
-              .nav-item = link_to "マイページ", shop_path(current_shop.id), class: 'nav-link text-dark'
-            - else
-              .nav-item = link_to "お店管理", new_shop_session_path, class: 'nav-link text-dark'
-            .nav-item = link_to "お問い合わせ", about_path, class: 'nav-link text-dark'
+            .navbar.ml-auto.h5
+              - if shop_signed_in?
+                .nav-item = link_to "ログアウト", destroy_shop_session_path, method: :delete, class: 'nav-link text-dark'
+                .nav-item = link_to "マイページ", shop_path(current_shop.id), class: 'nav-link text-dark'
+              - else
+                .nav-item = link_to "お店管理", new_shop_session_path, class: 'nav-link text-dark'
+              .nav-item = link_to "お問い合わせ", about_path, class: 'nav-link text-dark'
     .main
       = yield
 
