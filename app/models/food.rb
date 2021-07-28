@@ -7,4 +7,14 @@ class Food < ApplicationRecord
   validates :food_name, presence: true
   validates :price, presence: true
 
+  def create_tags!
+    tags.destroy_all if tags.present?
+
+    image_tags = Vision.get_image_data(food_image)
+    image_tags.each do |tag|
+      tags.create(name: tag)
+    end
+
+  end
+
 end

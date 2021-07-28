@@ -25,25 +25,25 @@ class Shop < ApplicationRecord
   def self.search(search,genre_id,admin) #self.でクラスメソッドとしている
     if admin
      if search.blank?
-       Shop.all
+        all
      else
-       Shop.keyword(search)
+       keyword(search)
      end
     else
       if search.blank? && genre_id.blank? #両方空の場合
-        Shop.order("RAND()").all #全てランダムで表示。
+         order("RANDOM()").all #全てランダムで表示。
       elsif search.empty? #searchが空でジャンルのみの検索
-        Shop.where(genre_id: genre_id)
+         where(genre_id: genre_id)
       elsif genre_id.blank? #ジャンルが空の場合
-        Shop.keyword(search)
+         keyword(search)
       else #両方有りの場合
-        Shop.keyword(search).where(genre_id: genre_id)
+         keyword(search).where(genre_id: genre_id)
       end
     end
   end
 
   def self.keyword(search)
-    Shop.where(['phone_number LIKE(?) OR address LIKE(?) OR shop_name LIKE(?)', "%#{search}%", "%#{search}%", "%#{search}%"]) #where(['検索したいカラム名 ? OR 検索したいカラム名 LIKE ? OR 検索したいカラム名 LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%"])
+   where(['phone_number LIKE(?) OR address LIKE(?) OR shop_name LIKE(?)', "%#{search}%", "%#{search}%", "%#{search}%"]) #where(['検索したいカラム名 ? OR 検索したいカラム名 LIKE ? OR 検索したいカラム名 LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%"])
   end
 
 
