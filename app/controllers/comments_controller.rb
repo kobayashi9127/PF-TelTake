@@ -5,9 +5,7 @@ class CommentsController < ApplicationController
     @comments = @shop.comments.order(created_at: :desc).page(params[:page]).per(10)
     # 新しい順に１０ずつ表示
     @notifications = current_shop.notifications
-    @notifications.where(checked: false).each do |notification|
-      notification.update_attributes(checked: true)
-    end
+    @notifications.checked!
   end
 
   def create
